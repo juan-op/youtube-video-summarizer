@@ -1,4 +1,5 @@
 from tempfile import TemporaryDirectory
+from typing import List
 
 from pytube import YouTube
 import whisper
@@ -19,7 +20,7 @@ def download_audio(url: str, path: str) -> None:
     audio.download(output_path=path, filename="a.mp4")
 
 
-def transcribe(path: str) -> list[str]:
+def transcribe(path: str) -> List[str]:
     """Transcribes the audio file at the given path and returns the text."""
     model = whisper.load_model("base")
     transcription = model.transcribe(path)["text"]
@@ -27,7 +28,7 @@ def transcribe(path: str) -> list[str]:
     return transcription_chunks
 
 
-def summarize(transcription: list[str]) -> str:
+def summarize(transcription: List[str]) -> str:
     """Summarizes the given text and returns the summary."""
     model = pipeline("summarization")
     summary_chunks = model(transcription, max_length=80, min_length=30)
