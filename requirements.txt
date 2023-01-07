@@ -1,0 +1,5 @@
+gradio==3.16.0
+pytube==12.1.2
+transformers==4.25.1
+whisper @ git+https://github.com/openai/whisper.git@28769fcfe50755a817ab922a7bc83483159600a9
+
