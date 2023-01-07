@@ -58,7 +58,7 @@ def main() -> None:
         summarize_btn.click(fn=get_title, inputs=url, outputs=title)
         gr.Markdown("*Funciona mejor con vídeos en inglés y de menos de 10 minutos.*")
 
-    page.launch(share=True)
+    page.launch()
 
 
 if __name__ == "__main__":
