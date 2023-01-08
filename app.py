@@ -54,8 +54,8 @@ def main() -> None:
         title = gr.Markdown()
         output = gr.Textbox(label="Resumen")
         summarize_btn = gr.Button("Dale").style(full_width=False)
-        summarize_btn.click(fn=execute_pipeline, inputs=url, outputs=output)
         summarize_btn.click(fn=get_title, inputs=url, outputs=title)
+        summarize_btn.click(fn=execute_pipeline, inputs=url, outputs=output)
         gr.Markdown("*Funciona mejor con vídeos en inglés y de menos de 10 minutos.*")
 
     page.launch()
