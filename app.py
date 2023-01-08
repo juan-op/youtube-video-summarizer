@@ -22,7 +22,7 @@ def download_audio(url: str, path: str) -> None:
 
 def transcribe(path: str) -> List[str]:
     """Transcribes the audio file at the given path and returns the text."""
-    model = whisper.load_model("base")
+    model = whisper.load_model("tiny")
     transcription = model.transcribe(path)["text"]
     transcription_chunks = [transcription[i : i + 1000] for i in range(0, len(transcription), 1000)]
     return transcription_chunks
