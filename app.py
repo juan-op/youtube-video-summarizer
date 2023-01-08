@@ -22,7 +22,7 @@ def download_audio(url: str, path: str) -> None:
 
 def transcribe(path: str) -> List[str]:
     """Transcribes the audio file at the given path and returns the text."""
-    model = whisper.load_model("tiny")
+    model = whisper.load_model("base")
     transcription = model.transcribe(path)["text"]
     transcription_chunks = [transcription[i : i + 1000] for i in range(0, len(transcription), 1000)]
     return transcription_chunks
@@ -30,7 +30,7 @@ def transcribe(path: str) -> List[str]:
 
 def summarize(transcription: List[str]) -> str:
     """Summarizes the given text and returns the summary."""
-    model = pipeline("summarization")
+    model = pipeline("summarization", model="facebook/bart-large-cnn")
     summary_chunks = model(transcription, max_length=80, min_length=30)
     summary = (" ".join([chunks["summary_text"] for chunks in summary_chunks]).strip().replace(" . ", ". "))
     return summary
