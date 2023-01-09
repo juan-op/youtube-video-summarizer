@@ -48,15 +48,15 @@ def execute_pipeline(url: str) -> str:
 
 def main() -> None:
     """Generates the Gradio interface."""
-    with gr.Blocks(analytics_enabled=True, title="Resume un video") as page:
-        gr.HTML('<h2 style="text-align:center"><span style="font-size:36px">Resume un video de <strong>Youtube</strong></span></h2>')
-        url = gr.Textbox(label="Introduce el link del video:")
+    with gr.Blocks(analytics_enabled=True, title="Summarize a video") as page:
+        gr.HTML('<h2 style="text-align:center"><span style="font-size:36px">Summarize a <strong>Youtube</strong> video</span></h2>')
+        url = gr.Textbox(label="Enter the URL:")
         title = gr.Markdown()
-        output = gr.Textbox(label="Resumen")
-        summarize_btn = gr.Button("Dale").style(full_width=False)
+        output = gr.Textbox(label="Summary")
+        summarize_btn = gr.Button("Go!").style(full_width=False)
         summarize_btn.click(fn=get_title, inputs=url, outputs=title)
         summarize_btn.click(fn=execute_pipeline, inputs=url, outputs=output)
-        gr.Markdown("*Funciona mejor con vídeos en inglés y de menos de 10 minutos.*")
+        gr.Markdown("*Works best with videos under 10 minutes. It usually takes around 2-3 minutes to execute.*")
 
     page.launch()
 
