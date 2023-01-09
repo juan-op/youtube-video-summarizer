@@ -1,7 +1,7 @@
 ---
-title: Videoresumen
+title: VideoSummary
 emoji: 📚
-colorFrom: green
+colorFrom: blue
 colorTo: gray
 sdk: gradio
 sdk_version: 3.16.0
