@@ -23,7 +23,7 @@ def download_audio(url: str, path: str) -> None:
 def transcribe(path: str) -> List[str]:
     """Transcribes the audio file at the given path and returns the text."""
     model = whisper.load_model("tiny")
-    transcription = model.transcribe(path)["text"]
+    transcription = model.transcribe(path, fp16=False)["text"]
     transcription_chunks = [transcription[i : i + 1000] for i in range(0, len(transcription), 1000)]
     return transcription_chunks
 
@@ -42,7 +42,6 @@ def execute_pipeline(url: str) -> str:
         download_audio(url, tmp_dir)
         result = transcribe(f"{tmp_dir}/a.mp4")
         text = summarize(result)
-        print("Done!")
         return text
 
 
@@ -57,7 +56,6 @@ def main() -> None:
         summarize_btn.click(fn=get_title, inputs=url, outputs=title)
         summarize_btn.click(fn=execute_pipeline, inputs=url, outputs=output)
         gr.Markdown("*Works best with videos under 10 minutes. It usually takes around 2-3 minutes to execute.*")
-
     page.launch()
 
 
