@@ -1,6 +1,6 @@
 # Youtube Video Summarizer
 
-This application downloads a video from Youtube, transcribes the audio to text and summarizes the text.
+This application downloads a video from Youtube, transcribes the audio to text and summarizes it.
 
 - :tv: Youtube video downloading: [*pytube*](https://github.com/pytube/pytube).
 
