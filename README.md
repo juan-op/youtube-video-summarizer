@@ -1,12 +1,10 @@
----
-title: VideoSummary
-emoji: 📚
-colorFrom: blue
-colorTo: gray
-sdk: gradio
-sdk_version: 3.16.0
-app_file: app.py
-pinned: true
----
+# Youtube Video Summarizer
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+This application downloads a video from Youtube, transcribes the audio to text and summarizes the text.
+
+- :tv: Youtube video downloading: *pytube*.
+- :sound: Audio transcription: *whisper*.
+- :scroll: Text summarization: *transformers*.
+- :computer: Application: *gradio*.
+
+A demo of the application hosted on a Hugging Face Space can be found [here](https://juanpy-videoresumen.hf.space/).
